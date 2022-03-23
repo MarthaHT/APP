@@ -1,0 +1,69 @@
+
+<html>
+<head>
+    <title>Mejora de imágenes mediante Ecualización de Histograma</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+<p><h1 align="center">Mejora de imágenes mediante Ecualización de Histograma</h1></p>
+<div class="container">
+<div class="row">
+
+    <h2>Seleccione la imagen a procesar
+    </h2>
+
+
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="Archivo" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+        <h>
+            <input type="submit" value="HE" name="v1" class="btn btn-info">
+        </h>
+        <h>
+            <input type="submit" value="HEBM+" name="v2" class="btn btn-info">
+        </h>
+        <h>
+            <input type="submit" value="fuzzy" name="v3" class="btn btn-info">
+            </h>
+        <h>
+            <input type="submit" value="HSV" name="v4" class="btn btn-info">
+            </h>
+        </p>
+    </form>
+    <hr>
+    
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            <h2>Resultado
+            </h2>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+   
+    {% if filename %}
+        <div>
+        <h2>Imagen Procesada
+        </h2>
+            <img src="{{ url_for('display_image1', filename=filename) }}">
+        </div>
+    {% endif %}
+     </p>
+      <hr>
+</div>
+</div>  
+<hr width=50%>
+</body>
+</html>
